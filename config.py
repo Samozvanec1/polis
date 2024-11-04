@@ -1,0 +1,5 @@
+TOKEN = "c1329ef64178c4fa9945af45c6219031451f307c"
+SECRET = "2bf4dd4d996725e54e580e09cbce84c3ad098232"
+
+EMAIL_POLIS = "usackikh.el@yandex.ru"
+PASSWORD_POLIS = "Samozvanec1"

@@ -1,5 +1,5 @@
 import json
-from dadata_integr import get_standardized_address
+from dadata_integration import get_standardized_address
 
 # Входные данные
 email = "44444444@mail.ru"
@@ -140,7 +140,7 @@ data = {
     "vehicleIdentificationNumberChassis": vehicleIdentificationNumberChassis
 }
 
-def data_make(data):
+def calculate_osago(data):
     email = data["email"]
     phone = data["phone"]
     markId = data["markId"]
@@ -290,11 +290,28 @@ def data_make(data):
         "type": "osago"
     }
 
+
     # Преобразование словаря Python в JSON строку
-    json_data = json.dumps(data, ensure_ascii=False, indent=4)
+    json_data = convert_boolean_values(data)
+    json_data = json.dumps(json_data, ensure_ascii=False, indent=4)
     return json_data
+
+def convert_boolean_values(json_data):
+    def recursive_convert(data):
+        if isinstance(data, dict):
+            return {key: recursive_convert(value) for key, value in data.items()}
+        elif isinstance(data, list):
+            return [recursive_convert(item) for item in data]
+        elif isinstance(data, str):
+            if data.lower() == 'true':
+                return True
+            elif data.lower() == 'false':
+                return False
+            else:
+                return data
+        else:
+            return data
+
+    return recursive_convert(json_data)
 # Вывод JSON строки
 
-json_data = data_make(data)
-
-print(json_data)

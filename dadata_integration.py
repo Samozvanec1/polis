@@ -1,11 +1,8 @@
 from dadata import Dadata
-
-# Замените ${API_KEY} и ${SECRET_KEY} на ваши реальные ключи
-token = "c1329ef64178c4fa9945af45c6219031451f307c"
-secret = "2bf4dd4d996725e54e580e09cbce84c3ad098232"
+from config import TOKEN, SECRET
 
 # Инициализация клиента DaData
-dadata = Dadata(token, secret)
+dadata = Dadata(TOKEN,SECRET)
 
 def get_standardized_address(address):
     try:
