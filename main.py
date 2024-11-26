@@ -1,6 +1,9 @@
 import requests as rq
 from calculate import calculate_osago
 from config import EMAIL_POLIS, PASSWORD_POLIS
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 
 headers = {
